@@ -1,7 +1,7 @@
 package org.openstack4j.openstack.provider;
 
+import com.google.common.collect.Maps;
 import java.util.Map;
-
 import org.openstack4j.api.APIProvider;
 import org.openstack4j.api.compute.ComputeFloatingIPService;
 import org.openstack4j.api.compute.ComputeImageService;
@@ -22,7 +22,9 @@ import org.openstack4j.api.heat.ResourcesService;
 import org.openstack4j.api.heat.SoftwareConfigService;
 import org.openstack4j.api.heat.StackService;
 import org.openstack4j.api.heat.TemplateService;
+import org.openstack4j.api.identity.DomainService;
 import org.openstack4j.api.identity.IdentityService;
+import org.openstack4j.api.identity.ProjectService;
 import org.openstack4j.api.identity.RoleService;
 import org.openstack4j.api.identity.ServiceManagerService;
 import org.openstack4j.api.identity.TenantService;
@@ -63,7 +65,9 @@ import org.openstack4j.openstack.heat.internal.ResourcesServiceImpl;
 import org.openstack4j.openstack.heat.internal.SoftwareConfigServiceImpl;
 import org.openstack4j.openstack.heat.internal.StackServiceImpl;
 import org.openstack4j.openstack.heat.internal.TemplateServiceImpl;
+import org.openstack4j.openstack.identity.internal.DomainServiceImpl;
 import org.openstack4j.openstack.identity.internal.IdentityServiceImpl;
+import org.openstack4j.openstack.identity.internal.ProjectServiceImpl;
 import org.openstack4j.openstack.identity.internal.RoleServiceImpl;
 import org.openstack4j.openstack.identity.internal.ServiceManagerServiceImpl;
 import org.openstack4j.openstack.identity.internal.TenantServiceImpl;
@@ -87,8 +91,6 @@ import org.openstack4j.openstack.storage.object.internal.ObjectStorageServiceImp
 import org.openstack4j.openstack.telemetry.internal.MeterServiceImpl;
 import org.openstack4j.openstack.telemetry.internal.TelemetryServiceImpl;
 
-import com.google.common.collect.Maps;
-
 /**
  * Simple API Provider which keeps internally Maps interface implementations as singletons
  * 
@@ -106,6 +108,8 @@ public class DefaultAPIProvider implements APIProvider {
 	public void initialize() {
 		bind(IdentityService.class, IdentityServiceImpl.class);
 		bind(TenantService.class, TenantServiceImpl.class);
+		bind(ProjectService.class, ProjectServiceImpl.class);
+		bind(DomainService.class, DomainServiceImpl.class);
 		bind(UserService.class, UserServiceImpl.class);
 		bind(RoleService.class, RoleServiceImpl.class);
 		bind(ServiceManagerService.class, ServiceManagerServiceImpl.class);

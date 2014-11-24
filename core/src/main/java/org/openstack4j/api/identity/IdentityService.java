@@ -19,6 +19,20 @@ public interface IdentityService extends RestService {
 	 * @return the tenant service
 	 */
 	TenantService tenants();
+        
+	/**
+	 * Domains Service API
+	 *
+	 * @return the domain service
+	 */
+	DomainService domains();
+        
+        /**
+	 * Projects Service API
+	 *
+	 * @return the project service
+	 */
+	ProjectService projects();
 	
 	/**
 	 * Users Service API

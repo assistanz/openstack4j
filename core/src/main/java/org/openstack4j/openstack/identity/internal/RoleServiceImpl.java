@@ -73,7 +73,7 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 	 */
 	@Override
 	public List<? extends Role> list() {
-		return get(Roles.class, uri("/OS-KSADM/roles")).execute().getList();
+		return get(Roles.class, uri("/roles")).execute().getList();
 	}
 
 	/**

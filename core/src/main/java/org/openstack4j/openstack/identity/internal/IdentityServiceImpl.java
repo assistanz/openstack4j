@@ -1,15 +1,15 @@
 package org.openstack4j.openstack.identity.internal;
 
-import static org.openstack4j.core.transport.ClientConstants.PATH_EXTENSIONS;
-
 import java.util.List;
-
 import org.openstack4j.api.Apis;
+import org.openstack4j.api.identity.DomainService;
 import org.openstack4j.api.identity.IdentityService;
+import org.openstack4j.api.identity.ProjectService;
 import org.openstack4j.api.identity.RoleService;
 import org.openstack4j.api.identity.ServiceManagerService;
 import org.openstack4j.api.identity.TenantService;
 import org.openstack4j.api.identity.UserService;
+import static org.openstack4j.core.transport.ClientConstants.PATH_EXTENSIONS;
 import org.openstack4j.model.common.Extension;
 import org.openstack4j.model.identity.Endpoint;
 import org.openstack4j.openstack.common.ExtensionValue.Extensions;
@@ -22,6 +22,16 @@ public class IdentityServiceImpl extends BaseOpenStackService implements Identit
 	@Override
 	public TenantService tenants() {
 		return Apis.get(TenantService.class);
+	}
+        
+	@Override
+	public DomainService domains() {
+		return Apis.get(DomainService.class);
+	}
+        
+        @Override
+	public ProjectService projects() {
+		return Apis.get(ProjectService.class);
 	}
 
 	@Override
