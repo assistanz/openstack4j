@@ -63,7 +63,7 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 	private ActionResponse addRemoveRoles(HttpMethod method, String tenantId, String userId, String roleId) {
 		checkNotNull(userId);
 		checkNotNull(roleId);
-		String uri = (tenantId != null) ? uri("/tenants/%s/users/%s/roles/OS-KSADM/%s", tenantId, userId, roleId) : uri("/users/%s/roles/OS-KSADM/%s", userId, roleId);
+		String uri = (tenantId != null) ? uri("/projects/%s/users/%s/roles/%s", tenantId, userId, roleId) : uri("/users/%s/roles/%s", userId, roleId);
 		return request(method, ActionResponse.class, uri).execute();
 	}
 
@@ -90,7 +90,7 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 	@Override
 	public List<? extends Role> listRolesForUser(String userId, String tenantId) {
 		checkNotNull(userId);
-		String uri = (tenantId != null) ? uri("/tenants/%s/users/%s/roles", tenantId, userId) : uri("/users/%s/roles", userId);
+		String uri = (tenantId != null) ? uri("/projects/%s/users/%s/roles", tenantId, userId) : uri("/users/%s/roles", userId);
 		return get(Roles.class, uri).execute().getList();
 	}
 
