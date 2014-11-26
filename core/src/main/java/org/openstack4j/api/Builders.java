@@ -24,6 +24,7 @@ import org.openstack4j.model.identity.builder.UserBuilder;
 import org.openstack4j.model.image.builder.ImageBuilder;
 import org.openstack4j.model.network.builder.ExtraDhcpOptBuilder;
 import org.openstack4j.model.network.builder.NetFloatingIPBuilder;
+import org.openstack4j.model.network.builder.NetQuotaBuilder;
 import org.openstack4j.model.network.builder.NetSecurityGroupBuilder;
 import org.openstack4j.model.network.builder.NetSecurityGroupRuleBuilder;
 import org.openstack4j.model.network.builder.NetworkBuilder;
@@ -52,6 +53,7 @@ import org.openstack4j.openstack.identity.domain.v3.KeystoneProject;
 import org.openstack4j.openstack.image.domain.GlanceImage;
 import org.openstack4j.openstack.networking.domain.NeutronExtraDhcpOptCreate;
 import org.openstack4j.openstack.networking.domain.NeutronFloatingIP;
+import org.openstack4j.openstack.networking.domain.NeutronNetQuota;
 import org.openstack4j.openstack.networking.domain.NeutronNetwork;
 import org.openstack4j.openstack.networking.domain.NeutronPort;
 import org.openstack4j.openstack.networking.domain.NeutronRouter;
@@ -298,6 +300,14 @@ public class Builders {
      */
     public static StackUpdateBuilder stackUpdate(){
         return HeatStackUpdate.builder();
+    }
+    
+    /**
+     * The builder to create NetQuota entities
+     * @return the NetQuota builder
+     */
+    public static NetQuotaBuilder netQuota() {
+        return NeutronNetQuota.builder();
     }
 
 }
