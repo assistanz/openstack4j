@@ -22,6 +22,7 @@ public class KeystoneUser implements User
 	private String username;
 	@JsonProperty("password")
 	private String password;
+        @JsonProperty("default_project_id")
 	private String tenantId;
 	private String name;
 	private String email;
