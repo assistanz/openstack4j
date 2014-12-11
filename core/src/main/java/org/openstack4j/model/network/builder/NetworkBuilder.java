@@ -20,6 +20,12 @@ public interface NetworkBuilder extends Builder<NetworkBuilder, Network> {
 	 * @see Network#isAdminStateUp()
 	 */
 	NetworkBuilder adminStateUp(boolean adminStateUp);
+        
+        /**
+         * 
+         * @see Network#isShared()
+         */
+	NetworkBuilder isShared(boolean isShared);
 	
 	/**
 	 * @see Network#getNetworkType()

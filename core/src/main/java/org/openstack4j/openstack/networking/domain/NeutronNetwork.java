@@ -39,7 +39,7 @@ public class NeutronNetwork implements Network {
 	@JsonProperty("provider:network_type")
 	private NetworkType networkType;
 	@JsonProperty("router:external")
-	private boolean routerExternal;
+	private Boolean routerExternal;
 	private String id;
 	private boolean shared;
 	@JsonProperty("provider:segmentation_id")
@@ -157,7 +157,7 @@ public class NeutronNetwork implements Network {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isRouterExternal() {
+	public Boolean isRouterExternal() {
 		return routerExternal;
 	}
 	
@@ -230,6 +230,12 @@ public class NeutronNetwork implements Network {
 		@Override
 		public NetworkBuilder adminStateUp(boolean adminStateUp) {
 			m.adminStateUp = adminStateUp;
+			return this;
+		}
+                
+                @Override
+		public NetworkBuilder isShared(boolean isShared) {
+			m.shared = isShared;
 			return this;
 		}
 

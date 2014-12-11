@@ -41,7 +41,7 @@ public interface Network extends Resource, Buildable<NetworkBuilder> {
 	/**
 	 * @return true if the router is external
 	 */
-	boolean isRouterExternal();
+	Boolean isRouterExternal();
 
 	/**
 	 * @return true if the network is shared
