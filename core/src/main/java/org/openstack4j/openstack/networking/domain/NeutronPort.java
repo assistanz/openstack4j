@@ -51,7 +51,8 @@ public class NeutronPort implements Port {
 
 	@JsonProperty("network_id")
 	private String networkId;
-
+        
+        @JsonProperty("status")
 	private State state;
 
 	@JsonProperty("tenant_id")

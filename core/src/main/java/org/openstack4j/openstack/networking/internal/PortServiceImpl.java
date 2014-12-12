@@ -59,7 +59,7 @@ public class PortServiceImpl extends BaseNetworkingServices implements PortServi
 	public Port update(Port port) {
 		checkNotNull(port);
 		checkNotNull(port.getId());
-		return put(NeutronPort.class, uri("/ports/%s", getAndClearIdentifier(port))).entity(port).execute();
+		return put(NeutronPort.class, uri("/ports/%s", getAndClearIdentifier(port))).entity(NeutronPort.builder().name(port.getName()).build()).execute();
 	}
 	
 	private String getAndClearIdentifier(Port port) {
