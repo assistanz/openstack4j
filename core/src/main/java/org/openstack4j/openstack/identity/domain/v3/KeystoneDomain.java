@@ -28,6 +28,7 @@ public class KeystoneDomain implements Domain {
     private String name;
     @JsonProperty
     private String description;
+    private String enabled; 
 
     @Override
     public String getId() {
@@ -43,11 +44,16 @@ public class KeystoneDomain implements Domain {
     public String getDescription() {
         return description;
     }
+    
+    @Override
+    public String getEnabled() {
+        return enabled;
+    }
 
     @Override
     public String toString() {
         return Objects.toStringHelper(getClass()).omitNullValues()
-                .add("id", id).add("name", name).add("description", description).toString();
+                .add("id", id).add("name", name).add("description", description).add("enabled", enabled).toString();
     }
 
     public static class Domains extends ListResult<KeystoneDomain> {

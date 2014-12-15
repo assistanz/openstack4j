@@ -26,4 +26,9 @@ public interface Domain extends ModelEntity {
      * @return the description of the domain
      */
     String getDescription();
+    
+    /**
+     * @return if the domain is enabled
+     */
+    String getEnabled();
 }
