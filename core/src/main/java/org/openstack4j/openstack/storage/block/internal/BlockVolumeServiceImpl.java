@@ -1,9 +1,7 @@
 package org.openstack4j.openstack.storage.block.internal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.util.List;
-
 import org.openstack4j.api.Builders;
 import org.openstack4j.api.storage.BlockVolumeService;
 import org.openstack4j.model.compute.ActionResponse;
@@ -11,6 +9,7 @@ import org.openstack4j.model.storage.block.Volume;
 import org.openstack4j.model.storage.block.VolumeType;
 import org.openstack4j.openstack.storage.block.domain.CinderVolume;
 import org.openstack4j.openstack.storage.block.domain.CinderVolume.Volumes;
+import org.openstack4j.openstack.storage.block.domain.CinderVolumeType;
 import org.openstack4j.openstack.storage.block.domain.CinderVolumeType.VolumeTypes;
 
 /**
@@ -19,13 +18,41 @@ import org.openstack4j.openstack.storage.block.domain.CinderVolumeType.VolumeTyp
  * @author Jeremy Unruh
  */
 public class BlockVolumeServiceImpl extends BaseBlockStorageServices implements BlockVolumeService {
-
+    
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public List<? extends VolumeType> listVolumeTypes() {
 		return get(VolumeTypes.class, uri("/types")).execute().getList();
+	}
+        
+        /**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ActionResponse deleteVolumeType(String volumeTypeId) {
+		checkNotNull(volumeTypeId);
+		return deleteWithResponse(uri("/types/%s", volumeTypeId)).execute();
+	}
+        
+        /**
+	 * {@inheritDoc}
+	 */
+        @Override
+        public VolumeType createVolumeType(String name) {
+            checkNotNull(name);
+            return post(CinderVolumeType.class, uri("/types")).entity(CinderVolumeType.create(name)).execute();
+            
+        }
+        
+        /**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public VolumeType getVolumeType(String volumeTypeId) {
+		checkNotNull(volumeTypeId);
+		return get(CinderVolumeType.class, uri("/types/%s", volumeTypeId)).execute();
 	}
 
 	/**

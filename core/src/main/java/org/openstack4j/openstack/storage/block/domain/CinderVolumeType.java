@@ -27,6 +27,18 @@ public class CinderVolumeType implements VolumeType {
 	
 	@JsonProperty("extra_specs")
 	private Map<String, String> extraSpecs;
+        
+        /**
+	 * Used internally by the domain side of the API to create a new VolumeType on an OpenStack server
+	 * 
+	 * @param name the name of the volumeType
+	 * @return CinderVolumeType
+	 */
+	public static CinderVolumeType create(String name) {
+		CinderVolumeType cinderVolumeType = new CinderVolumeType();
+		cinderVolumeType.name = name;
+	  return cinderVolumeType;
+	}
 	
 	/**
 	 * {@inheritDoc}

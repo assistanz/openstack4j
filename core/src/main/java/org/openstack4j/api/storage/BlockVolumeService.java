@@ -20,6 +20,28 @@ public interface BlockVolumeService extends RestService {
 	 * @return List of VolumeType entities
 	 */
 	List<? extends VolumeType> listVolumeTypes();
+        
+        /**
+	 * Gets a Block Storage volume type by ID
+	 * @param volumeTypeId the volume identifier
+	 * @return the volumeType or null if not found
+	 */
+	VolumeType getVolumeType(String volumeTypeId);
+        
+        /**
+	 * Creates a new Block Storage Volume Type
+	 * @param name the volume type name
+	 * @return the created volumeType
+	 */
+	VolumeType createVolumeType(String name);
+        
+        /**
+	 * Deletes the specified volumeType
+	 * 
+	 * @param volumeTypeId the volumeType identifier
+	 * @return the action response
+	 */
+	ActionResponse deleteVolumeType(String volumeTypeId);
 
 	/**
 	 * Lists summary information for all Block Storage volumes that the tenant who submits the request can access.
