@@ -160,6 +160,9 @@ public class BaseOpenStackService {
 
         public R execute(Function<HttpResponse, R> parser) {
             HttpRequest<R> request = req.build();
+            
+            System.out.println("request" + request);
+            
             return HttpExecutor.create().execute(request).getEntity(request.getReturnType(), parser);
         }
 

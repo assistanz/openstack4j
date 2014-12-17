@@ -54,4 +54,14 @@ public interface MeterService extends RestService {
 	 * @return List of Statistics
 	 */
 	List<? extends Statistics> statistics(String meterName, int period);
+        
+        
+        /**
+	 * Returns computed statistics for the given meterName for the given query
+	 * @param meterName the name of the meter to fetch statistics for
+         * @param criteria the sample query criteria for filtering results
+	 * @return List of Statistics
+	 */
+	List<? extends Statistics> statistics(String meterName,  SampleCriteria criteria);
+        
 }

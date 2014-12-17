@@ -1,6 +1,7 @@
 package org.openstack4j.model.telemetry;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.openstack4j.model.ModelEntity;
 
@@ -75,4 +76,10 @@ public interface Statistics extends ModelEntity {
    * @return The group-by of the data set
    */
 	String getGroupBy();
+        
+        /**
+	 * @return Arbitrary metadata associated with the resource
+	 */
+        Map<String, Object> getMetadata();
+        
 }
