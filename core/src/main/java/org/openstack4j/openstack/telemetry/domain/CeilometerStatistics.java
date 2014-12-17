@@ -6,6 +6,7 @@ import org.openstack4j.model.telemetry.Statistics;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
+import java.util.Map;
 
 /**
  * Computed Statistics for a Query against a Meter
@@ -45,6 +46,9 @@ public class CeilometerStatistics implements Statistics {
 	private String unit;
 	
 	private String groupby;
+        
+        @JsonProperty("resource_metadata")
+	private Map<String, Object> metadata;
 	
 	/**
 	 * {@inheritDoc}
@@ -142,13 +146,21 @@ public class CeilometerStatistics implements Statistics {
 		return unit;
 	}
 	
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getGroupBy() {
-    return groupby;
-  }
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String getGroupBy() {
+          return groupby;
+        }
+  
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Map<String, Object> getMetadata() {
+                return metadata;
+        }
 	
 	/**
 	 * {@inheritDoc}
@@ -160,7 +172,7 @@ public class CeilometerStatistics implements Statistics {
 				    .add("durationStart", durationStart).add("durationEnd", durationEnd)
 				    .add("min", min).add("max", max).add("sum", sum).add("period", period)
 				    .add("periodStart", periodStart).add("periodEnd", periodEnd).add("unit", unit)
-				    .add("groupBy", groupby)
+				    .add("groupBy", groupby).add("metadata", metadata)
 				    .toString();
 	}
 
