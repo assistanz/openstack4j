@@ -100,7 +100,7 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 	@Override
 	public ActionResponse delete(String roleId) {
 		checkNotNull(roleId);
-		return deleteWithResponse(uri("/OS-KSADM/roles/%s", roleId)).execute();
+		return deleteWithResponse(uri("/roles/%s", roleId)).execute();
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 	@Override
 	public Role get(String roleId) {
 		checkNotNull(roleId);
-		return get(KeystoneRole.class, uri("/OS-KSADM/roles/%s", roleId)).execute();
+		return get(KeystoneRole.class, uri("/roles/%s", roleId)).execute();
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 	@Override
 	public Role create(String name) {
 		checkNotNull(name);
-		return post(KeystoneRole.class, uri("/OS-KSADM/roles")).entity(KeystoneRole.builder().name(name).build()).execute();
+		return post(KeystoneRole.class, uri("/roles")).entity(KeystoneRole.builder().name(name).build()).execute();
 	}
 
 	/**
