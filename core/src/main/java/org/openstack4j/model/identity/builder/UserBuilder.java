@@ -44,6 +44,11 @@ public interface UserBuilder extends Builder<UserBuilder, User> {
 	 * @see User#getTenantId()
 	 */
 	UserBuilder tenantId(String tenantId);
+        
+        /**
+	 * @see User#getDomainId()
+	 */
+	UserBuilder domainId(String domainId);
 	
 	/**
 	 * Accepts an existing tenant and uses the tenant's id

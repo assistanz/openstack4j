@@ -24,6 +24,8 @@ public class KeystoneUser implements User
 	private String password;
         @JsonProperty("default_project_id")
 	private String tenantId;
+        @JsonProperty("domain_id")
+	private String domainId;
 	private String name;
 	private String email;
 	@JsonProperty("enabled")
@@ -52,6 +54,9 @@ public class KeystoneUser implements User
 	public String getTenantId() {
 		return tenantId;
 	}
+        public String getDomainId() {
+		return domainId;
+	}
 	public String getName() {
 		return name;
 	}
@@ -69,7 +74,7 @@ public class KeystoneUser implements User
 	public String toString() {
 		return Objects.toStringHelper(this).omitNullValues()
 				    .add("name", name).add("id", id).add("username", username).add("password", password)
-				    .add("tenantId", tenantId).add("email", email).add("enabled", enabled)
+				    .add("tenantId", tenantId).add("domainId", domainId).add("email", email).add("enabled", enabled)
 				    .add("roles", roles)
 				    .toString();
 	}
@@ -129,6 +134,11 @@ public class KeystoneUser implements User
 		
 		public UserBuilder tenantId(String tenantId) {
 			model.tenantId = tenantId;
+			return this;
+		}
+                
+                public UserBuilder domainId(String domainId) {
+			model.domainId = domainId;
 			return this;
 		}
 		

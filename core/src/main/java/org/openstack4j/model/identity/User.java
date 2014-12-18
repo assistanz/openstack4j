@@ -25,6 +25,11 @@ public interface User extends ModelEntity, Buildable<UserBuilder> {
 	 * @return the tenant identifier (default tenant)
 	 */
 	String getTenantId();
+        
+        /**
+	 * @return the domain identifier 
+	 */
+	String getDomainId();
 	
 	/**
 	 * @return the name of the user
