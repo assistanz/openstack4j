@@ -24,14 +24,14 @@ public class KeystoneUser implements User
 	private String password;
         @JsonProperty("default_project_id")
 	private String tenantId;
-        @JsonProperty("domain_id")
-	private String domainId;
 	private String name;
 	private String email;
 	@JsonProperty("enabled")
 	private Boolean enabled;
 	@JsonProperty("OS-ROLE:roles")
 	private List<KeystoneRole> roles;
+	@JsonProperty("domain_id")
+	private String domainId;
 	
 	public static UserBuilder builder() {
 		return new UserConcreteBuilder();
@@ -45,26 +45,37 @@ public class KeystoneUser implements User
 	public String getId() {
 		return id;
 	}
+	
 	public String getUsername() {
 		return username;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
+	
 	public String getTenantId() {
 		return tenantId;
 	}
+
         public String getDomainId() {
 		return domainId;
 	}
+
 	public String getName() {
 		return name;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
 	public boolean isEnabled() {
 		return enabled != null && enabled;
+	}
+	
+	public String getDomainId() {
+	    return domainId;
 	}
 	
 	public List<? extends Role> getRoles() {
@@ -137,11 +148,6 @@ public class KeystoneUser implements User
 			return this;
 		}
                 
-                public UserBuilder domainId(String domainId) {
-			model.domainId = domainId;
-			return this;
-		}
-		
 		public UserBuilder tenant(Tenant tenant) {
 			if (tenant != null && tenant.getId() != null)
 				model.tenantId = tenant.getId();
@@ -158,6 +164,12 @@ public class KeystoneUser implements User
 			model = (KeystoneUser) in;
 			return this;
 		}
+
+        @Override
+        public UserBuilder domainId(String domainId) {
+            model.domainId = domainId;
+            return this;
+        }
 		
 	}
 }
