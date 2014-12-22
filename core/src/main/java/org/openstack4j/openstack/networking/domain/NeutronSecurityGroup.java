@@ -36,6 +36,21 @@ public class NeutronSecurityGroup implements SecurityGroup {
   @JsonProperty("security_group_rules")
   private List<NeutronSecurityGroupRule> rules;
   
+        /**
+	 * Security Groups only need two fields populated when Updated so instead of a builder the API can
+	 * leverage this call to update a existing Security Group
+	 * 
+	 * @param name name of the security group
+	 * @param description description of the security group
+	 * @return
+	 */
+	public static NeutronSecurityGroup update(String name, String description) {
+		NeutronSecurityGroup sg = new NeutronSecurityGroup();
+		sg.name = name;
+		sg.description = description;
+		return sg;
+	}
+  
   /**
    * {@inheritDoc}
    */

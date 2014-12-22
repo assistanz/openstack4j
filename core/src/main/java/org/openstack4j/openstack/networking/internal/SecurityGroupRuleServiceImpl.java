@@ -8,6 +8,7 @@ import org.openstack4j.api.networking.SecurityGroupRuleService;
 import org.openstack4j.model.network.SecurityGroupRule;
 import org.openstack4j.openstack.networking.domain.NeutronSecurityGroupRule;
 import org.openstack4j.openstack.networking.domain.NeutronSecurityGroupRule.SecurityGroupRules;
+import org.openstack4j.model.compute.ActionResponse;
 
 /**
  * FloatingIPService implementation that provides Neutron Floating-IP based Service Operations.
@@ -29,9 +30,9 @@ public class SecurityGroupRuleServiceImpl extends BaseNetworkingServices impleme
    * {@inheritDoc}
    */
   @Override
-  public void delete(String ruleId) {
+  public ActionResponse delete(String ruleId) {
     checkNotNull(ruleId);
-    delete(Void.class, uri("/security-group-rules/%s", ruleId)).execute();
+    return deleteWithResponse(uri("/security-group-rules/%s", ruleId)).execute();
   }
   
   /**

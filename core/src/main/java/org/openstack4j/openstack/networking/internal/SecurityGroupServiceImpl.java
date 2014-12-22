@@ -43,6 +43,17 @@ public class SecurityGroupServiceImpl extends BaseNetworkingServices implements 
     checkNotNull(securityGroup);
     return post(NeutronSecurityGroup.class, uri("/security-groups")).entity(securityGroup).execute();
   }
+  
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public SecurityGroup update(String securityGroupId, String name, String description) {
+      checkNotNull(securityGroupId);
+      checkNotNull(name);
+      return put(NeutronSecurityGroup.class, uri("/security-groups/%s", securityGroupId)).entity(NeutronSecurityGroup.update(name, description)).execute();
+  }
+  
 
   /**
 	 * {@inheritDoc}

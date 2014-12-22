@@ -44,4 +44,14 @@ public interface SecurityGroupService extends RestService {
    */
   SecurityGroup create(SecurityGroup securityGroup);
   
+  /**
+   * Updates a SecurityGroup
+   * 
+   * @param securityGroupId
+   * @param name
+   * @param description
+   * @return the security group
+   */
+  SecurityGroup update(String securityGroupId, String name, String description);
+  
 }

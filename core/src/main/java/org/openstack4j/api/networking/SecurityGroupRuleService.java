@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openstack4j.common.RestService;
 import org.openstack4j.model.network.SecurityGroupRule;
+import org.openstack4j.model.compute.ActionResponse;
 
 
 /**
@@ -33,7 +34,7 @@ public interface SecurityGroupRuleService extends RestService {
    *
    * @param id the id
    */
-  void delete(String id);
+  ActionResponse delete(String id);
   
   /**
    * Creates a security group rule.
