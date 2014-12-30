@@ -26,6 +26,12 @@ public interface NetworkBuilder extends Builder<NetworkBuilder, Network> {
          * @see Network#isShared()
          */
 	NetworkBuilder isShared(boolean isShared);
+        
+        /**
+         * 
+         * @see Network#isRouterExternal()
+         */
+	NetworkBuilder isRouterExternal(boolean isRouterExternal);
 	
 	/**
 	 * @see Network#getNetworkType()

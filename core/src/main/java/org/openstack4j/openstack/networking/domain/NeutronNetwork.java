@@ -238,6 +238,12 @@ public class NeutronNetwork implements Network {
 			m.shared = isShared;
 			return this;
 		}
+                
+                @Override
+		public NetworkBuilder isRouterExternal(boolean isRouterExternal) {
+			m.routerExternal = isRouterExternal;
+			return this;
+		}
 
 		@Override
 		public NetworkBuilder networkType(NetworkType networkType) {
