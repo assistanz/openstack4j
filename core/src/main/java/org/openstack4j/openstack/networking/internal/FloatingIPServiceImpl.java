@@ -65,7 +65,6 @@ public class FloatingIPServiceImpl extends BaseNetworkingServices implements Net
 	public NetFloatingIP create(NetFloatingIP floatingIp) {
 		checkNotNull(floatingIp);
 		checkNotNull(floatingIp.getFloatingNetworkId());
-		checkNotNull(floatingIp.getPortId());
 		return post(NeutronFloatingIP.class, uri("/floatingips")).entity(floatingIp).execute(); 
 	}
 

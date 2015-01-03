@@ -238,6 +238,16 @@ public class NovaServerCreate implements ServerCreate {
             }
             return this;
         }
+        
+        @Override
+        public ServerCreateConcreteBuilder securityGroups(List<String> nameList) {
+            if (nameList != null) {
+                for (String name : nameList) {
+                   m.addSecurityGroup(name);
+                }
+            }
+            return this;
+        }
 
         @Override
         public ServerCreateBuilder addNetworkPort(String portId) {

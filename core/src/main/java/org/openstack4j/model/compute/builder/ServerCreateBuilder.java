@@ -48,6 +48,14 @@ public interface ServerCreateBuilder extends Buildable.Builder<ServerCreateBuild
      * @return this builder
      */
     ServerCreateBuilder networks(List<String> networks);
+    
+    /**
+     * Adds list of Security Group (by name) to server
+     *
+     * @param securityGroups
+     * @return this builder
+     */
+    ServerCreateBuilder securityGroups(List<String> securityGroups);
 
     /**
      * Adds a network port
