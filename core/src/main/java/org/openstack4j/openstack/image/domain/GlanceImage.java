@@ -81,6 +81,13 @@ public class GlanceImage implements Image {
 		return new ImageConcreteBuilder();
 	}
 	
+        public static GlanceImage update (String name, boolean isPublic) {
+            GlanceImage m = new GlanceImage();
+            m.name = name;
+            m.isPublic = isPublic;
+            return m;
+        }
+        
 	@Override
 	public ImageBuilder toBuilder() {
 		return new ImageConcreteBuilder(this);
@@ -145,7 +152,7 @@ public class GlanceImage implements Image {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
+            @Override
 	public String getChecksum() {
 		return checksum;
 	}
@@ -404,6 +411,13 @@ public class GlanceImage implements Image {
 			if (isPublic != null)
 				m.isPublic = isPublic;
 			return this;
+		}
+                
+                @Override
+		public ImageBuilder isProtected(Boolean isProtected) {
+			if (isProtected != null)
+                            m.isProtected = isProtected;
+			    return this;
 		}
 
 		@Override

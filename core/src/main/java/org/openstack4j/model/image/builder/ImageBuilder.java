@@ -64,6 +64,11 @@ public interface ImageBuilder extends Builder<ImageBuilder, Image>{
 	 * @see Image#isPublic()
 	 */
 	ImageBuilder isPublic(Boolean isPublic);
+        
+        /**
+	 * @see Image#isProtected()
+	 */
+	ImageBuilder isProtected(Boolean isProtected);
 
 	/**
 	 * @see Image#getProperties()

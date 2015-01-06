@@ -57,6 +57,15 @@ public interface ImageService extends RestService {
      * @return the updated image
      */
     Image update(Image image);
+    
+    /**
+     * Updates an Image.  The image must have the id set or a validation exception will be thrown
+     * 
+     * @param imageId
+     * @param image
+     * @return 
+     */
+    Image update(String imageId, Image image);
 
     /**
      * Return the image date for the image by ID

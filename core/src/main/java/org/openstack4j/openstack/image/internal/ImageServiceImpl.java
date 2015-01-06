@@ -83,6 +83,16 @@ public class ImageServiceImpl extends BaseImageServices implements ImageService 
         checkNotNull(image.getId());
         return put(GlanceImage.class, uri("/images/%s", image.getId())).headers(ImageForUpdateToHeaders.instance().apply(image)).execute();
     }
+    
+   /**
+    * {@inheritDoc}
+    */
+    @Override
+    public Image update(String imageId, Image image) {
+        checkNotNull(image);
+        checkNotNull(imageId);
+        return put(GlanceImage.class, uri("/images/%s", imageId)).entity(GlanceImage.update(image.getName(), image.isPublic())).execute();
+    }
 
     /**
      * {@inheritDoc}
