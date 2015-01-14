@@ -39,5 +39,5 @@ public interface Router extends Resource, Buildable<RouterBuilder> {
 	 *
 	 * @return the external gateway info
 	 */
-	ExternalGateway getExternalGatewayInfo();
+	ExternalGatewayInfo getExternalGatewayInfo();
 }

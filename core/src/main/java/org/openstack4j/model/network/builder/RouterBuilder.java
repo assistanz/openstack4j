@@ -3,6 +3,7 @@ package org.openstack4j.model.network.builder;
 import org.openstack4j.common.Buildable.Builder;
 import org.openstack4j.model.identity.Tenant;
 import org.openstack4j.model.network.ExternalGateway;
+import org.openstack4j.model.network.ExternalGatewayInfo;
 import org.openstack4j.model.network.Router;
 
 /**
@@ -45,12 +46,7 @@ public interface RouterBuilder extends Builder<RouterBuilder, Router> {
 	/**
 	 * @see Router#getExternalGatewayInfo()
 	 */
-	RouterBuilder externalGateway(String networkId, boolean enableSNAT);
-	
-	/**
-	 * @see Router#getExternalGatewayInfo()
-	 */
-	RouterBuilder externalGateway(ExternalGateway externalGateway);
+	RouterBuilder externalGateway(ExternalGatewayInfo externalGateway);
 	
 	/**
 	 * @see Router#getRoutes()
