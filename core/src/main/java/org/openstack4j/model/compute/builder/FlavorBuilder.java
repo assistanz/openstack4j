@@ -34,6 +34,11 @@ public interface FlavorBuilder extends Builder<FlavorBuilder, Flavor> {
 	 * @see Flavor#getSwap()
 	 */
 	FlavorBuilder swap(int swap);
+        
+        /**
+	 * @see Flavor#getEphemeral()
+	 */
+	FlavorBuilder ephemeral(int ephemeral);
 	
 	/**
 	 * @see Flavor#getRxtxFactor();

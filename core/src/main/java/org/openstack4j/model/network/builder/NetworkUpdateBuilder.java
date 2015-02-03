@@ -33,4 +33,12 @@ public interface NetworkUpdateBuilder extends Builder<NetworkUpdateBuilder, Netw
      * @return the builder
      */
     NetworkUpdateBuilder shared(boolean shared);
+    
+    /**
+     * Admin-only. Indicates whether this network is exernal across all tenants.
+     * 
+     * @param routerExternal if true the network is external
+     * @return the builder
+     */
+    NetworkUpdateBuilder routerExternal(boolean routerExternal);
 }

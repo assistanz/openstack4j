@@ -236,6 +236,14 @@ public class NovaFlavor implements Flavor {
 			m.swap = swap;
 			return this;
 		}
+                
+                /**
+		 * @see Flavor#getEphemeral()
+		 */
+		public FlavorBuilder ephemeral(int ephemeral) {
+			m.ephemeral = ephemeral;
+			return this;
+		}
 		
 		/**
 		 * @see Flavor#getRxtxFactor();
