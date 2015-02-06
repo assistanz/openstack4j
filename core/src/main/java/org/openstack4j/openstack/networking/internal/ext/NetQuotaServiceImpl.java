@@ -1,12 +1,13 @@
 package org.openstack4j.openstack.networking.internal.ext;
 
+import com.google.common.base.Preconditions;
+import static com.google.common.base.Preconditions.checkNotNull;
+import java.util.List;
 import org.openstack4j.api.networking.ext.NetQuotaService;
 import org.openstack4j.model.compute.ActionResponse;
 import org.openstack4j.model.network.NetQuota;
 import org.openstack4j.openstack.networking.domain.NeutronNetQuota;
 import org.openstack4j.openstack.networking.internal.BaseNetworkingServices;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Networking (Neutron) Quota Extension API
@@ -16,8 +17,9 @@ import com.google.common.base.Preconditions;
 public class NetQuotaServiceImpl extends BaseNetworkingServices implements NetQuotaService {
 
     @Override
-    public NetQuota get() {
-        return get(NeutronNetQuota.class, uri("/quotas")).execute();
+    public NetQuota get(String tenantId) {
+        checkNotNull(tenantId);
+        return get(NeutronNetQuota.class, uri("/quotas/%s",tenantId)).execute();
     }
 
     @Override
@@ -30,5 +32,21 @@ public class NetQuotaServiceImpl extends BaseNetworkingServices implements NetQu
     public ActionResponse reset() {
         return deleteWithResponse(uri("/quotas")).execute();
     }
+    
+    @Override
+    public NetQuota put(NetQuota netQuota, String tenantId) {
+
+        checkNotNull(tenantId);
+        String uri = uri("/quotas/%s", tenantId);
+        return put(NeutronNetQuota.class, uri)
+                .entity(netQuota)
+                .execute();
+    }
+
+        
+
+   
+    
+    
 
 }
