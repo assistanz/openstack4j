@@ -219,17 +219,62 @@ public class NovaQuotaSet implements QuotaSet {
                     return this;
                 }
 
-//                @Override
-//                public QuotaSetBuilder floatingIps(int floatingIps) {
-//                    m.floatingIps = floatingIps;
-//                    return this;
-//                }
+                @Override
+                public QuotaSetBuilder floatingIps(int floatingIps) {
+                    m.floatingIps = floatingIps;
+                    return this;
+                }
 
                 @Override
                 public QuotaSetBuilder instances(int instances) {
                     m.instances = instances;
                     return this;
                 }
+
+                @Override
+                public QuotaSetBuilder metadataItems(int metadataItems) {
+                    m.metadataItems = metadataItems;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder injectedFiles(int injectedFiles) {
+                    m.injectedFiles = injectedFiles;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder injectedFileContentBytes(int injectedFileContentBytes) {
+                    m.injectedFileContentBytes = injectedFileContentBytes;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder securityGroups(int securityGroups) {
+                    m.securityGroups = securityGroups;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder securityGroupRules(int securityGroupRules) {
+                    m.securityGroupRules = securityGroupRules;
+                    return this;
+                }
+                
+                @Override
+                public QuotaSetBuilder injectedFilePathBytes(int injectedFilePathBytes) {
+                    m.injectedFilePathBytes = injectedFilePathBytes;
+                    return this;
+                }
+                
+                @Override
+                public QuotaSetBuilder keyPairs(int keyPairs) {
+                    m.keyPairs = keyPairs;
+                    return this;
+                }
+
+
+                
                 
                 
 		

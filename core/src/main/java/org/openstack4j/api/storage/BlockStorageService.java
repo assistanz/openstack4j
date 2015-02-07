@@ -1,5 +1,6 @@
 package org.openstack4j.api.storage;
 
+import org.openstack4j.api.storage.QuotaSetService;
 import org.openstack4j.common.RestService;
 import org.openstack4j.model.storage.block.BlockLimits;
 
@@ -26,4 +27,11 @@ public interface BlockStorageService extends RestService {
 	 * @return the absolute limits
 	 */
 	BlockLimits getLimits();
+        
+        /**
+	 * Quota-Set Service API
+	 *
+	 * @return the quota set service
+	 */
+	QuotaSetService quotaSets();
 }
