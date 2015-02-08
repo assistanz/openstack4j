@@ -165,6 +165,8 @@ public class BaseOpenStackService {
         public R execute(ExecutionOptions<R> options) {
             header(HEADER_USER_AGENT, USER_AGENT);
             HttpRequest<R> request = req.build();
+            
+            request.getHeaders().put("Accept", "application/json");
 
             return HttpExecutor.create().execute(request).getEntity(request.getReturnType(), options);
 

@@ -19,13 +19,6 @@ public interface SwiftContainer extends ModelEntity {
     String getName();
 
     /**
-     * The current object count for this container
-     * 
-     * @return the number of objects
-     */
-    int getObjectCount();
-
-    /**
      * The total size of all the objects within this contain in bytes
      * 
      * @return total size in bytes
@@ -38,4 +31,25 @@ public interface SwiftContainer extends ModelEntity {
      * @return The metadata for this container
      */
     Map<String, String> getMetadata();
+    
+    /**
+     * The content type of the container
+     * 
+     * @return the content type
+     */
+    String getContentType();
+    
+    /**
+     * Hash value of the container
+     * 
+     * @return the hash value
+     */
+    String getHash();
+    
+    /**
+     * Last modified date of the container
+     * 
+     * @return the last modified date
+     */
+    String getLastModified();
 }

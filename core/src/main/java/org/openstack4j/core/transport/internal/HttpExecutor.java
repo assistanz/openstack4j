@@ -47,6 +47,7 @@ public class HttpExecutor  {
      * Delegate to {@link HttpExecutorService#execute(HttpRequest)} 
      */
     public <R> HttpResponse execute(HttpRequest<R> request) {
+        System.out.println("end point: "+request.getPath() + " , end point: "+ request.getEndpoint());
         LOG.debug("Executing Request: %s -> %s", request.getEndpoint(), request.getPath());
         return service.execute(request);
     }

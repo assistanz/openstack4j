@@ -1,13 +1,13 @@
 package org.openstack4j.openstack.storage.object.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Objects;
+import java.util.List;
 import java.util.Map;
-
 import org.openstack4j.api.Apis;
 import org.openstack4j.api.storage.ObjectStorageContainerService;
 import org.openstack4j.model.storage.object.SwiftContainer;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.Objects;
+import org.openstack4j.openstack.common.ListResult;
 
 /**
  * Represents an OpenStack Swift Container which holds Objects
@@ -21,25 +21,45 @@ public class SwiftContainerImpl implements SwiftContainer {
     @JsonProperty
     private String name;
     
-    @JsonProperty("count")
-    private int objectCount;
+//    @JsonProperty("count")
+//    private int objectCount;
     
     @JsonProperty("bytes")
     private long totalSize;
+    
+    @JsonProperty("content_type")
+    private String contentType;
+    
+    private String hash;
+    
+    @JsonProperty("last_modified")
+    private String lastModified;
     
     @Override
     public String getName() {
         return name;
     }
 
-    @Override
-    public int getObjectCount() {
-        return objectCount;
-    }
+//    @Override
+//    public int getObjectCount() {
+//        return objectCount;
+//    }
 
     @Override
     public long getTotalSize() {
         return totalSize;
+    }
+    
+    public String getContentType() {
+        return contentType;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public String getLastModified() {
+        return lastModified;
     }
     
     @Override
@@ -53,7 +73,23 @@ public class SwiftContainerImpl implements SwiftContainer {
     @Override
     public String toString() {
         return Objects.toStringHelper(this).omitNullValues()
-                   .add("name", name).add("count", objectCount).add("total size", totalSize)
+                   .add("name", name).add("content type", contentType).add("hash", hash)
+                   .add("totalSize",totalSize)
+                   .add("last modified", lastModified)
+                   .add("total size", totalSize)
                    .toString();
     }
+    
+    public static class Containers extends ListResult<SwiftContainerImpl> {
+        
+
+        private static final long serialVersionUID = 1L;
+
+        List<SwiftContainerImpl> containers;
+
+        public List<SwiftContainerImpl> value() {    
+            return containers;
+        }
+    }
+    
 }
