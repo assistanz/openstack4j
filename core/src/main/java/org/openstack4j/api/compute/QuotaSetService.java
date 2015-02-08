@@ -51,5 +51,14 @@ public interface QuotaSetService extends RestService {
 	 * @return Tenant Usage or null if not found
 	 */
 	SimpleTenantUsage getTenantUsage(String tenantId);
+        
+        /**
+         * update the quotaset based on tenant 
+         * 
+         * @param quotaSet
+         * @param tenantId
+         * @return 
+         */
+        QuotaSet put(QuotaSet quotaSet, String tenantId);
 	
 }

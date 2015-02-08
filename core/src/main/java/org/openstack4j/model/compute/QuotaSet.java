@@ -1,13 +1,15 @@
 package org.openstack4j.model.compute;
 
+import org.openstack4j.common.Buildable;
 import org.openstack4j.model.ModelEntity;
+import org.openstack4j.model.compute.builder.QuotaSetBuilder;
 
 /**
  * An OpenStack Quota-Set
  * 
  * @author Jeremy Unruh
  */
-public interface QuotaSet extends ModelEntity {
+public interface QuotaSet extends ModelEntity, Buildable<QuotaSetBuilder> {
 
 	/**
 	 * @return the identifier
@@ -32,7 +34,7 @@ public interface QuotaSet extends ModelEntity {
 	/**
 	 * @return the number of gigabytes allowed
 	 */
-	int getGigabytes();
+//	int getGigabytes();
 
 	/**
 	 * @return Quantity of instanceable RAM (MBytes)
@@ -52,7 +54,7 @@ public interface QuotaSet extends ModelEntity {
 	/**
 	 * @return Number of permitted volumes
 	 */
-	int getVolumes();
+//	int getVolumes();
 
 	/**
 	 * @return Number of instanceable cores

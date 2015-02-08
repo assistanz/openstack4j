@@ -1,10 +1,10 @@
 package org.openstack4j.openstack.compute.domain;
 
-import org.openstack4j.model.compute.QuotaSet;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.google.common.base.Objects;
+import org.openstack4j.model.compute.QuotaSet;
+import org.openstack4j.model.compute.builder.QuotaSetBuilder;
 
 /**
  * An OpenStack Quota-Set
@@ -50,6 +50,10 @@ public class NovaQuotaSet implements QuotaSet {
 
 	@JsonProperty("key_pairs")
 	private int keyPairs;
+        
+        public static QuotaSetBuilder builder() {
+		return new QuotaSetConcreteBuilder();
+	}
 	
 	/**
 	 * {@inheritDoc}
@@ -86,10 +90,10 @@ public class NovaQuotaSet implements QuotaSet {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	public int getGigabytes() {
-		return gigabytes;
-	}
+//	@Override
+//	public int getGigabytes() {
+//		return gigabytes;
+//	}
 
 	/**
 	 * {@inheritDoc}
@@ -118,10 +122,10 @@ public class NovaQuotaSet implements QuotaSet {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	public int getVolumes() {
-		return volumes;
-	}
+//	@Override
+//	public int getVolumes() {
+//		return volumes;
+//	}
 
 	/**
 	 * {@inheritDoc}
@@ -167,10 +171,112 @@ public class NovaQuotaSet implements QuotaSet {
 	public String toString() {
 		return Objects.toStringHelper(this).omitNullValues()
 				     .add("id", id).add("metadataItems", metadataItems).add("injectedFileContentBytes", injectedFileContentBytes)
-				     .add("injectedFileContentBytes", injectedFileContentBytes).add("injectedFiles", injectedFiles).add("gigabytes", gigabytes)
-				     .add("ram", "ram").add("securityGroups", securityGroups).add("securityGroupRules", securityGroupRules)
-				     .add("cores", cores).add("floatingIps", floatingIps).add("instances", instances).add("volumes", volumes)
+				     .add("injectedFileContentBytes", injectedFileContentBytes).add("injectedFiles", injectedFiles)
+				     .add("ram", ram).add("securityGroups", securityGroups).add("securityGroupRules", securityGroupRules)
+				     .add("cores", cores).add("floatingIps", floatingIps).add("instances", instances)
 				     .add("injectedFilePathBytes", injectedFilePathBytes).add("keyPairs", keyPairs)
 				     .toString();
+	}
+
+    @Override
+    public QuotaSetBuilder toBuilder() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+        
+        
+        public static class QuotaSetConcreteBuilder implements QuotaSetBuilder {
+
+		private NovaQuotaSet m;
+		
+		QuotaSetConcreteBuilder() {
+			this(new NovaQuotaSet());
+		}
+		
+		QuotaSetConcreteBuilder(NovaQuotaSet model) {
+			this.m = model;
+		}
+		
+		
+		public QuotaSetBuilder cores(int cores) {
+			m.cores = cores;
+			return this;
+		}
+		
+		@Override
+		public QuotaSet build() {
+			return m;
+		}
+
+		@Override
+		public QuotaSetBuilder from(QuotaSet in) {
+			m = (NovaQuotaSet) in;
+			return this;
+		}
+
+                @Override
+                public QuotaSetBuilder ram(int ram) {
+                    m.ram = ram;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder floatingIps(int floatingIps) {
+                    m.floatingIps = floatingIps;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder instances(int instances) {
+                    m.instances = instances;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder metadataItems(int metadataItems) {
+                    m.metadataItems = metadataItems;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder injectedFiles(int injectedFiles) {
+                    m.injectedFiles = injectedFiles;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder injectedFileContentBytes(int injectedFileContentBytes) {
+                    m.injectedFileContentBytes = injectedFileContentBytes;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder securityGroups(int securityGroups) {
+                    m.securityGroups = securityGroups;
+                    return this;
+                }
+
+                @Override
+                public QuotaSetBuilder securityGroupRules(int securityGroupRules) {
+                    m.securityGroupRules = securityGroupRules;
+                    return this;
+                }
+                
+                @Override
+                public QuotaSetBuilder injectedFilePathBytes(int injectedFilePathBytes) {
+                    m.injectedFilePathBytes = injectedFilePathBytes;
+                    return this;
+                }
+                
+                @Override
+                public QuotaSetBuilder keyPairs(int keyPairs) {
+                    m.keyPairs = keyPairs;
+                    return this;
+                }
+
+
+                
+                
+                
+		
 	}
 }

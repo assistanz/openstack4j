@@ -62,6 +62,19 @@ public class QuotaSetServiceImpl extends BaseComputeServices implements QuotaSet
 		checkNotNull(tenantId);
 		return get(NovaSimpleTenantUsage.class, uri("/os-simple-tenant-usage/%s", tenantId)).execute();
 	}
+
+        @Override
+        public QuotaSet put(QuotaSet quotaSet, String tenantId) {
+
+            checkNotNull(tenantId);
+            String uri = uri("/os-quota-sets/%s", tenantId);
+            return put(NovaQuotaSet.class, uri)
+                    .entity(quotaSet)
+                    .execute();
+            
+        }
+
+        
 	
 	
 

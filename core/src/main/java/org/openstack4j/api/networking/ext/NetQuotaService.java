@@ -1,5 +1,6 @@
 package org.openstack4j.api.networking.ext;
 
+import java.util.List;
 import org.openstack4j.common.RestService;
 import org.openstack4j.model.compute.ActionResponse;
 import org.openstack4j.model.network.NetQuota;
@@ -15,9 +16,12 @@ public interface NetQuotaService extends RestService {
     /**
      * Fetches the network quotas for the current tenant
      * 
+     * @param tenantId
      * @return the tenants quota
      */
-    NetQuota get();
+    NetQuota get(String tenantId);
+    
+//    List<? extends NetQuota> list();
     
     /**
      * Updates the network quotas for the current tenant
@@ -33,5 +37,15 @@ public interface NetQuotaService extends RestService {
      * @return the action response
      */
     ActionResponse reset();
+    
+
+    /**
+     * update the quotaset based on tenant 
+     * 
+     * @param netQuota
+     * @param tenantId
+     * @return 
+     */
+    NetQuota put(NetQuota netQuota, String tenantId);
 
 }

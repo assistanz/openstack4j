@@ -19,14 +19,15 @@ public class NeutronNetQuota implements NetQuota {
 
     private static final long serialVersionUID = 1L;
     
-    @JsonProperty
+    
     private int subnet;
-    @JsonProperty
+    
     private int router;
-    @JsonProperty
+    
     private int port;
-    @JsonProperty
+    
     private int network;
+    
     @JsonProperty("floatingip")
     private int floatingIp;
 

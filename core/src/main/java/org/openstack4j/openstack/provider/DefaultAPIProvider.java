@@ -164,6 +164,7 @@ public class DefaultAPIProvider implements APIProvider {
 		bind(FloatingIPDNSService.class, FloatingIPDNSServiceImpl.class);
 		bind(FloatingIPDNSDomainService.class, FloatingIPDNSDomainServiceImpl.class);
 		bind(FloatingIPDNSEntryService.class, FloatingIPDNSEntryServiceImpl.class);
+		bind(org.openstack4j.api.storage.QuotaSetService.class, org.openstack4j.openstack.storage.block.internal.QuotaSetServiceImpl.class);
 	}
 
 	/**
