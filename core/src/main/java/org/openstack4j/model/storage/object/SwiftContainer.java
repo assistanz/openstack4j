@@ -17,6 +17,13 @@ public interface SwiftContainer extends ModelEntity {
      * @return the container name
      */
     String getName();
+    
+    /**
+     * The total count of object 
+     * 
+     * @return total count of object
+     */
+    int getObjectCount();
 
     /**
      * The total size of all the objects within this contain in bytes

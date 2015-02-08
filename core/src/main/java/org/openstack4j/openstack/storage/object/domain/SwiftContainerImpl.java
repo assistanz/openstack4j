@@ -21,8 +21,8 @@ public class SwiftContainerImpl implements SwiftContainer {
     @JsonProperty
     private String name;
     
-//    @JsonProperty("count")
-//    private int objectCount;
+    @JsonProperty("count")
+    private int objectCount;
     
     @JsonProperty("bytes")
     private long totalSize;
@@ -40,10 +40,10 @@ public class SwiftContainerImpl implements SwiftContainer {
         return name;
     }
 
-//    @Override
-//    public int getObjectCount() {
-//        return objectCount;
-//    }
+    @Override
+    public int getObjectCount() {
+        return objectCount;
+    }
 
     @Override
     public long getTotalSize() {
@@ -74,9 +74,9 @@ public class SwiftContainerImpl implements SwiftContainer {
     public String toString() {
         return Objects.toStringHelper(this).omitNullValues()
                    .add("name", name).add("content type", contentType).add("hash", hash)
+                   .add("object count", objectCount)
                    .add("totalSize",totalSize)
                    .add("last modified", lastModified)
-                   .add("total size", totalSize)
                    .toString();
     }
     
