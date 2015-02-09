@@ -10,6 +10,8 @@ import java.util.Map;
 
 import org.openstack4j.api.types.ServiceType;
 import org.openstack4j.core.transport.ClientConstants;
+import static org.openstack4j.core.transport.ClientConstants.CONTENT_TYPE_JSON;
+import static org.openstack4j.core.transport.ClientConstants.HEADER_ACCEPT;
 import org.openstack4j.core.transport.ExecutionOptions;
 import org.openstack4j.core.transport.HttpMethod;
 import org.openstack4j.core.transport.HttpRequest;
@@ -19,9 +21,6 @@ import org.openstack4j.core.transport.internal.HttpExecutor;
 import org.openstack4j.model.ModelEntity;
 import org.openstack4j.model.common.Payload;
 import org.openstack4j.model.compute.ActionResponse;
-
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
 
 public class BaseOpenStackService {
 
@@ -164,11 +163,10 @@ public class BaseOpenStackService {
 
         public R execute(ExecutionOptions<R> options) {
             header(HEADER_USER_AGENT, USER_AGENT);
+            header(HEADER_ACCEPT, CONTENT_TYPE_JSON);
             HttpRequest<R> request = req.build();
-            
-            request.getHeaders().put("Accept", "application/json");
-
-            return HttpExecutor.create().execute(request).getEntity(request.getReturnType(), options);
+                        
+              return HttpExecutor.create().execute(request).getEntity(request.getReturnType(), options);
 
         }
 
