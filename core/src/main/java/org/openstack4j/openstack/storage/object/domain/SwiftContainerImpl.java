@@ -2,6 +2,7 @@ package org.openstack4j.openstack.storage.object.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.openstack4j.api.Apis;
@@ -33,7 +34,7 @@ public class SwiftContainerImpl implements SwiftContainer {
     private String hash;
     
     @JsonProperty("last_modified")
-    private String lastModified;
+    private Date lastModified;
     
     @Override
     public String getName() {
@@ -58,7 +59,7 @@ public class SwiftContainerImpl implements SwiftContainer {
         return hash;
     }
 
-    public String getLastModified() {
+    public Date getLastModified() {
         return lastModified;
     }
     

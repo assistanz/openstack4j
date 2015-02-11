@@ -1,17 +1,17 @@
 package org.openstack4j.openstack.internal;
 
-import static org.openstack4j.core.transport.ClientConstants.HEADER_USER_AGENT;
-import static org.openstack4j.core.transport.ClientConstants.USER_AGENT;
-
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
 import org.openstack4j.api.types.ServiceType;
 import org.openstack4j.core.transport.ClientConstants;
 import static org.openstack4j.core.transport.ClientConstants.CONTENT_TYPE_JSON;
 import static org.openstack4j.core.transport.ClientConstants.HEADER_ACCEPT;
+import static org.openstack4j.core.transport.ClientConstants.HEADER_USER_AGENT;
+import static org.openstack4j.core.transport.ClientConstants.USER_AGENT;
 import org.openstack4j.core.transport.ExecutionOptions;
 import org.openstack4j.core.transport.HttpMethod;
 import org.openstack4j.core.transport.HttpRequest;

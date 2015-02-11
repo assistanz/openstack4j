@@ -112,7 +112,7 @@ public class ObjectStorageObjectServiceImpl extends BaseObjectStorageService imp
                               .executeWithResponse();
         return resp.header(ETAG);
     }
-
+    
     @Override
     public ActionResponse delete(String containerName, String name) {
         checkNotNull(containerName);

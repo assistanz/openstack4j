@@ -1,5 +1,6 @@
 package org.openstack4j.model.storage.object;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.openstack4j.model.ModelEntity;
@@ -58,5 +59,5 @@ public interface SwiftContainer extends ModelEntity {
      * 
      * @return the last modified date
      */
-    String getLastModified();
+    Date getLastModified();
 }
