@@ -137,7 +137,7 @@ public class ObjectStorageObjectServiceImpl extends BaseObjectStorageService imp
 
         HttpResponse resp = put(Void.class, dest.getURI())
                                 .header(X_COPY_FROM, source.getURI())
-                                .header(CONTENT_LENGTH, 0)
+//                                .header(CONTENT_LENGTH, 0)
                                 .executeWithResponse();
         return resp.header(ETAG);
     }
