@@ -1,13 +1,11 @@
 package org.openstack4j.model.storage.object.options;
 
+import com.google.common.collect.Maps;
+import java.util.Map;
 import static org.openstack4j.model.storage.object.SwiftHeaders.CONTAINER_METADATA_PREFIX;
 import static org.openstack4j.model.storage.object.SwiftHeaders.CONTENT_TYPE;
-
-import java.util.Map;
-
+import static org.openstack4j.model.storage.object.SwiftHeaders.OBJECT_METADATA_PREFIX;
 import org.openstack4j.openstack.storage.object.functions.MetadataToHeadersFunction;
-
-import com.google.common.collect.Maps;
 
 /**
  * Options used for the creation and update of Objects
@@ -50,7 +48,7 @@ public final class ObjectPutOptions {
      * @return ObjectPutOptions
      */
     public ObjectPutOptions metadata(Map<String, String> metadata) {
-        this.headers.putAll(MetadataToHeadersFunction.create(CONTAINER_METADATA_PREFIX).apply(metadata));
+        this.headers.putAll(MetadataToHeadersFunction.create(OBJECT_METADATA_PREFIX).apply(metadata));
         return this;
     }
     
