@@ -25,7 +25,7 @@ import org.openstack4j.openstack.internal.BaseOpenStackService;
  */
 public class ProjectServiceImpl extends BaseOpenStackService implements ProjectService {
     
-    @Override
+        @Override
 	public List<? extends Project> list() {
 		return get(KeystoneProject.Projects.class, uri("/projects")).execute().getList();
 	}
@@ -34,6 +34,11 @@ public class ProjectServiceImpl extends BaseOpenStackService implements ProjectS
 	public Project get(String projectId) {
 		checkNotNull(projectId);
 		return get(KeystoneProject.class, uri("/projects"), "/", projectId).execute();
+	}
+        
+        @Override
+	public List<? extends Project> getByName(String projectName) {
+		return get(KeystoneProject.Projects.class, uri("/projects")).param("name", projectName).execute().getList();
 	}
         
         @Override
