@@ -102,12 +102,17 @@ public class DefaultEndpointURLResolver implements EndpointURLResolver {
 			if (p.type == ServiceType.forName(catalog.getType())) 
 			{
 				for (EndpointV3 ep : catalog.getEndpoints()) {
-					// Since we only support V3 authentication - skip a V3 URL
-					if (ep.getInterface() == p.perspective && !isEndpointV3(ep.getURL()))
-						return ep.getURL().toString();
+                                    // Since we only support V3 authentication - skip a V3 URL
+                                    if(p.region == null) {
+                                        if (ep.getInterface() == p.perspective && !isEndpointV3(ep.getURL()))
+                                                return ep.getURL().toString();
+                                        } else {
+                                            if (ep.getInterface() == p.perspective && !isEndpointV3(ep.getURL()) && ep.getRegion().equals(p.region))
+                                                    return ep.getURL().toString();
+                                        }
+                                    }
 				}
 			}
-		}
 		return null;
 	}
 
