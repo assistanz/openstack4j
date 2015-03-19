@@ -1,13 +1,12 @@
 package org.openstack4j.model.compute;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import org.openstack4j.model.ModelEntity;
 import org.openstack4j.model.common.Link;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
+import org.openstack4j.model.network.SecurityGroup;
 
 /**
  * A server is a virtual machine instance on a compute based system.  
@@ -251,6 +250,12 @@ public interface Server extends ModelEntity {
 	 * @return the OS extended volumes attached
 	 */
 	List<String> getOsExtendedVolumesAttached();
+        
+        /**
+         * 
+         * @return the security groups 
+         */
+        List<String> getSecurityGroups();
 
 	/**
 	 * @return the UUID for this server
@@ -261,5 +266,5 @@ public interface Server extends ModelEntity {
 	 * @return the administrative password to the VM
 	 */
 	String getAdminPass();
-
-}
+        
+	}

@@ -1,14 +1,20 @@
 package org.openstack4j.openstack.compute.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
 import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.openstack4j.api.Apis;
 import org.openstack4j.model.common.Link;
 import org.openstack4j.model.common.functions.IdEntityToString;
+import org.openstack4j.model.common.functions.NameEntityToString;
 import org.openstack4j.model.compute.Addresses;
 import org.openstack4j.model.compute.Fault;
 import org.openstack4j.model.compute.Flavor;
@@ -17,6 +23,7 @@ import org.openstack4j.model.compute.Server;
 import org.openstack4j.openstack.common.GenericLink;
 import org.openstack4j.openstack.common.IdResourceEntity;
 import org.openstack4j.openstack.common.ListResult;
+import org.openstack4j.openstack.common.NameResourceEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -54,8 +61,8 @@ public class NovaServer implements Server {
 	public Date created;
 	public Map<String, String> metadata;
 
-//	@JsonProperty("security_groups")
-//	private List<SecurityGroup> securityGroups;
+	@JsonProperty("security_groups")
+	private List<NameResourceEntity> securityGroups;
 
 	@JsonProperty("OS-EXT-STS:task_state")
 	private String taskState;
@@ -259,6 +266,15 @@ public class NovaServer implements Server {
 		return (List<String>) ((osExtendedVolumesAttached == null) 
 		                      ? Collections.emptyList() 
 		                      : Lists.transform(osExtendedVolumesAttached, IdEntityToString.INSTANCE));
+	}
+        
+        @SuppressWarnings("unchecked")
+        @JsonIgnore
+	@Override
+	public List<String> getSecurityGroups() {
+		return (List<String>) ((securityGroups == null) 
+		                      ? Collections.emptyList() 
+		                      : Lists.transform(securityGroups, NameEntityToString.INSTANCE));
 	}
 
 	@Override
