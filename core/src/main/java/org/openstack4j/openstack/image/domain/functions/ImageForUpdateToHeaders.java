@@ -63,8 +63,8 @@ public class ImageForUpdateToHeaders implements Function<Image, Map<String, Obje
 //        if (from.getContainerFormat() != ContainerFormat.UNRECOGNIZED)
 //            headers.put(CONTAINER_FORMAT.asHeader(), from.getContainerFormat().value());
 //
-//        if (from.getDiskFormat() != DiskFormat.UNRECOGNIZED)
-//            headers.put(DISK_FORMAT.asHeader(), from.getDiskFormat().value());
+        if (from.getDiskFormat() != DiskFormat.UNRECOGNIZED)
+            headers.put(DISK_FORMAT.asHeader(), from.getDiskFormat().value());
 //
 //
 //        if (from.getProperties() != null) {
