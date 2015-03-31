@@ -65,6 +65,8 @@ public class SwiftContainerImpl implements SwiftContainer {
     
     @Override
     public Map<String, String> getMetadata() {
+        //URL encoding
+        name = name.replace(" ", "%20");
         return Apis.get(ObjectStorageContainerService.class).getMetadata(name);
     }
 
