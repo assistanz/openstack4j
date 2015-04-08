@@ -1,16 +1,16 @@
 package org.openstack4j.openstack.identity.internal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.util.List;
-
 import org.openstack4j.api.Apis;
 import org.openstack4j.api.identity.UserService;
 import org.openstack4j.model.compute.ActionResponse;
 import org.openstack4j.model.identity.Role;
 import org.openstack4j.model.identity.User;
+import org.openstack4j.model.identity.v3.Project;
 import org.openstack4j.openstack.identity.domain.KeystoneUser;
 import org.openstack4j.openstack.identity.domain.KeystoneUser.Users;
+import org.openstack4j.openstack.identity.domain.v3.KeystoneProject.Projects;
 import org.openstack4j.openstack.internal.BaseOpenStackService;
 
 /**
@@ -24,6 +24,11 @@ public class UserServiceImpl extends BaseOpenStackService implements UserService
 	public List<? extends User> list() {
 		return get(Users.class, uri("/users")).execute().getList();
 	}
+        
+        @Override
+        public List<? extends Project> listUserTenants(String userId) {
+            return get(Projects.class, uri("/users/%s/projects", userId)).execute().getList();
+        }
 	
 	@Override
 	public User get(String userId) {

@@ -1,10 +1,10 @@
 package org.openstack4j.api.identity;
 
 import java.util.List;
-
 import org.openstack4j.model.compute.ActionResponse;
 import org.openstack4j.model.identity.Role;
 import org.openstack4j.model.identity.User;
+import org.openstack4j.model.identity.v3.Project;
 
 /**
  * Identity User based Operations
@@ -35,6 +35,14 @@ public interface UserService {
      * @return List of User
      */
     List<? extends User> list();
+    
+    /**
+     * List current user tenants
+     * 
+     * @param userId the user id
+     * @return List of Project
+     */
+    List<? extends Project> listUserTenants(String userId);
 
     /**
      * List users who are associated with the given tenant identifier
