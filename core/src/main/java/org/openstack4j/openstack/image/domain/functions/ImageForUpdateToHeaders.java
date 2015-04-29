@@ -50,8 +50,8 @@ public class ImageForUpdateToHeaders implements Function<Image, Map<String, Obje
         Map<String, Object> headers = Maps.newHashMap();
 
         addIfNotNull(headers, NAME, from.getName());
-//        addIfNotNull(headers, MIN_DISK, from.getMinDisk());
-//        addIfNotNull(headers, MIN_RAM, from.getMinRam());
+        addIfNotNull(headers, MIN_DISK, from.getMinDisk());
+        addIfNotNull(headers, MIN_RAM, from.getMinRam());
 //        addIfNotNull(headers, OWNER, from.getOwner());
         addIfNotNull(headers, IS_PUBLIC, from.isPublic());
         addIfNotNull(headers, PROTECTED, from.isProtected());
