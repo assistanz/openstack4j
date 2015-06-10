@@ -50,6 +50,16 @@ public interface RoleService extends RestService {
 	 * @return the action response
 	 */
 	ActionResponse removeUserRole(String tenantId, String userId, String roleId);
+        
+        /**
+	 * Add the user role from a user and the associated tenant
+	 *
+	 * @param tenantId the tenant id
+	 * @param userId the user id
+	 * @param roleId the role id
+	 * @return the action response
+	 */
+	ActionResponse addUserRoleByTenant(String tenantId, String userId, String roleId);
 	
 	/**
 	 * Lists the global roles
@@ -57,6 +67,13 @@ public interface RoleService extends RestService {
 	 * @return the list<? extends role>
 	 */
 	List<? extends Role> list();
+        
+        /**
+	 * Lists the global roles
+	 *
+	 * @return the list<? extends role>
+	 */
+	List<? extends Role> getList();
 	
 	/**
 	 * List roles for user.
@@ -97,6 +114,13 @@ public interface RoleService extends RestService {
 	 * @return the Role or null if not found
 	 */
 	Role getByName(String name);
+        
+        /**
+	 * Gets a Role by Name for keystone version 2
+	 * @param name the name of the Role
+	 * @return the Role or null if not found
+	 */
+	Role getName(String name);
 	
 	/**
 	 * Creates a new Role

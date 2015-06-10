@@ -66,6 +66,17 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 		String uri = (tenantId != null) ? uri("/projects/%s/users/%s/roles/%s", tenantId, userId, roleId) : uri("/users/%s/roles/%s", userId, roleId);
 		return request(method, ActionResponse.class, uri).execute();
 	}
+        
+        /**
+	 * {@inheritDoc}
+	 */
+	@Override
+        public ActionResponse addUserRoleByTenant(String tenantId, String userId, String roleId) {
+		checkNotNull(userId);
+		checkNotNull(roleId);
+		String uri = (tenantId != null) ? uri("/tenants/%s/users/%s/roles/OS-KSADM/%s", tenantId, userId, roleId) : uri("/users/%s/roles/%s", userId, roleId);
+		return request(HttpMethod.PUT, ActionResponse.class, uri).execute();
+	}
 
 
 	/**
@@ -74,6 +85,14 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 	@Override
 	public List<? extends Role> list() {
 		return get(Roles.class, uri("/roles")).execute().getList();
+	}
+        
+        /**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<? extends Role> getList() {
+		return get(Roles.class, uri("/OS-KSADM/roles")).execute().getList();
 	}
 
 	/**
@@ -130,6 +149,23 @@ public class RoleServiceImpl extends BaseOpenStackService implements RoleService
 		// API is against the interface we can change this anytime
 		checkNotNull(name);
 		List<? extends Role> roles = list();
+		for (Role r : roles)
+		{
+			if (name.equalsIgnoreCase(r.getName()))
+				return r;
+		}
+		return null;
+	}
+        
+        /**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Role getName(String name) {
+		// Due to a bug in OpenStack Rest Service (not returning documented query) we will manually match on the list until it's resolved. Since the contract of the
+		// API is against the interface we can change this anytime
+		checkNotNull(name);
+		List<? extends Role> roles = getList();
 		for (Role r : roles)
 		{
 			if (name.equalsIgnoreCase(r.getName()))

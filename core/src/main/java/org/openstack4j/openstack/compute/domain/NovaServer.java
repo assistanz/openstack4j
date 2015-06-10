@@ -88,7 +88,7 @@ public class NovaServer implements Server {
 	private List<IdResourceEntity> osExtendedVolumesAttached;
 	private String uuid;
 	private String adminPass;
-
+        
 	@Override
 	public String getId() {
 		return id;
