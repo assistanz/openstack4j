@@ -108,4 +108,11 @@ public class UserServiceImpl extends BaseOpenStackService implements UserService
 	    checkNotNull(userName);
 	    return get(Users.class, "/users").param("name", userName).execute().getList();   
 	}
+        
+        @Override
+        public User getName(String userName) {
+            checkNotNull(userName);
+	    return get(KeystoneUser.class, "/users").param("name", userName).execute(); 
+        }
+        
 }

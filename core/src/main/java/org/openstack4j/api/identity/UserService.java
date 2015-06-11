@@ -28,6 +28,14 @@ public interface UserService {
      * @return List of User
      */
     List<? extends User> getByName(String userName);
+    
+    /**
+     * Gets the detailed User information by name
+     * 
+     * @param userName
+     * @return 
+     */
+    User getName(String userName);
 
     /**
      * Lists current users
